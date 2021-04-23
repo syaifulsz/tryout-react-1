@@ -5,8 +5,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
+import PageHome from './components/Home';
+import PageAbout from './components/About';
 import { Master as LayoutMaster } from './components/Layout';
 
 export default class App extends Component
@@ -17,10 +17,10 @@ export default class App extends Component
                 <LayoutMaster>
                     <Switch>
                         <Route path="/about">
-                            <About />
+                            <PageAbout />
                         </Route>
                         <Route path="/">
-                            <Home />
+                            <PageHome />
                         </Route>
                     </Switch>
                 </LayoutMaster>
