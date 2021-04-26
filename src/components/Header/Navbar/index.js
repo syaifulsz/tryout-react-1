@@ -26,6 +26,7 @@ export default class Navbar extends Component
     }
 
     render() {
+
         const navs = [];
         for ( const key in ConfigPages ) {
             const page = ConfigPages[ key ];

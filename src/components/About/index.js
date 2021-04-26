@@ -1,10 +1,11 @@
 import { Component } from 'react';
+import Page from '../Page';
+import ConfigPages from '../../configs/pages';
 
 export default class About extends Component {
 
     render () {
-        return(
-            <div>This is AboutPage</div>
-        )
+
+        return <Page page={ConfigPages.about} />
     }
 }
