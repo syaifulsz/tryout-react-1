@@ -1,11 +1,12 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import ConfigPages from '../../../configs/pages';
+import { Link, useLocation  } from 'react-router-dom';
+import configPages from '../../../configs/pages';
+import { getPageConfig } from '../../../helpers';
 
 const NavItem = ( { page, onClick, activePageSlug } ) => {
-
     const linkClassNames = [ 'nav-link' ];
-    if ( activePageSlug === page.slug ) {
+    const location = useLocation();
+    if ( location.pathname === page.path ) {
         linkClassNames.push( 'active' );
     }
     const linkClassNamesRender = linkClassNames.join( ' ' );
@@ -18,23 +19,14 @@ const NavItem = ( { page, onClick, activePageSlug } ) => {
 
 export default class Navbar extends Component
 {
-    constructor( props ) {
-        super( props );
-        this.state = {
-            activePageSlug: 'home'
-        };
-    }
-
     render() {
 
+        console.log( getPageConfig() );
+
         const navs = [];
-        for ( const key in ConfigPages ) {
-            const page = ConfigPages[ key ];
-            navs.push(<NavItem key={key} page={page} activePageSlug={ this.state.activePageSlug } onClick={ () => {
-                this.setState( {
-                    activePageSlug: page.slug
-                } )
-            } } />);
+        for ( const key in configPages ) {
+            const page = configPages[ key ];
+            navs.push(<NavItem key={key} page={page} />);
         }
 
         return(

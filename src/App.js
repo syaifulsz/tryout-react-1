@@ -7,14 +7,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-// import PageHome from './components/Home';
-// import PageAbout from './components/About';
 import { Master as LayoutMaster } from './components/Layout';
 import ConfigPages from './configs/pages';
-
-// import PageHome from './components/Home';
-// import PageAbout from './components/About';
-// import PageFormRepeater from './components/FormRepeater';
 
 export default class App extends Component
 {
@@ -25,9 +19,6 @@ export default class App extends Component
                 <LayoutMaster>
                     <Switch>
                         <RegisterRoutes />
-                        { /*registerRoutes.map( ( route, i ) => (
-                            <RouteWithSubRoutes key={ i } { ...route } />
-                        ) ) */ }
                     </Switch>
                 </LayoutMaster>
             </Router>
@@ -39,11 +30,6 @@ const RegisterRoutes = () => {
     const registerRoutes = [];
     for ( const key in ConfigPages ) {
         const page = ConfigPages[ key ];
-        // console.log( { page } );
-        // registerRoutes.push( {
-        //     path: page.path,
-        //     component: page.component
-        // } );
         registerRoutes.push(<RouteWithSubRoutes key={ key } { ...page } />)
     }
     return registerRoutes;
@@ -55,7 +41,7 @@ const RegisterRoutes = () => {
  * @constructor
  */
 function RouteWithSubRoutes( route ) {
-    return <Route exact path={ route.path } render={ props => (
+    return <Route exact={ route.exact } path={ route.path } location={ route.location } render={ props => (
         // pass the sub-routes down to keep nesting
         <route.component {...props} routes={route.routes} />
       ) } />
