@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Link, useLocation  } from 'react-router-dom';
 import configPages from '../../../configs/pages';
 import { getPageConfig } from '../../../helpers';
+import { useSelector } from 'react-redux';
 
 const NavItem = ( { page, onClick, activePageSlug } ) => {
     const linkClassNames = [ 'nav-link' ];
@@ -15,6 +16,19 @@ const NavItem = ( { page, onClick, activePageSlug } ) => {
             <Link className={linkClassNamesRender} onClick={ onClick } to={page.url}>{page.title}</Link>
         </li>
     )
+}
+
+
+
+const Student = () => {
+
+    const student = useSelector( state => state.student );
+
+    if ( !student.name ) {
+        return null;
+    }
+
+    return(<div className="text-white">{student.name} ({student.age})</div>)
 }
 
 export default class Navbar extends Component
@@ -40,6 +54,7 @@ export default class Navbar extends Component
                         {navs}
                     </ul>
                 </div>
+                <Student />
             </nav>
         )
     }

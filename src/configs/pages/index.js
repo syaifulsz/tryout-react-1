@@ -1,6 +1,7 @@
 import PageHome from '../../components/Home';
 import PageAbout from '../../components/About';
 import PageFormRepeater from '../../components/FormRepeater';
+import PageStudentProfile from '../../components/Student/Profile';
 
 const config = {
     home: {
@@ -35,6 +36,17 @@ const config = {
         body: 'This is an example of form with repeater fields',
         component: PageFormRepeater,
         theme: 'theme-form-repeater'
+    },
+    studentProfile: {
+        title: 'Profile',
+        slug: 'student-profile',
+        url: '/student-profile',
+        path: '/student-profile',
+        exact: false,
+        description: 'This is the student profile that directly linked with Student store via Redux',
+        body: 'This is the student profile that directly linked with Student store via Redux',
+        component: PageStudentProfile,
+        theme: 'theme-student-profile'
     }
 }
 
